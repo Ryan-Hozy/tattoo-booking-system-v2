@@ -1,5 +1,5 @@
 import { facebook, instagram, shieldTick, support, truckFast, twitter } from "../assets/icons";
-import { customer1, customer2, panther, skelly, pile, monkey, thumbnailShoe1, thumbnailShoe2, thumbnailShoe3 } from "../assets/images";
+import { customer1, customer2, panther, skelly, pile, monkey} from "../assets/images";
 
 export const navLinks = [
     { href: "#home", label: "Home" },
@@ -74,17 +74,7 @@ export const reviews = [
 
 
 export const footerLinks = [
-    {
-        title: "Products",
-        links: [
-            { name: "Air Force 1", link: "/" },
-            { name: "Air Max 1", link: "/" },
-            { name: "Air Jordan 1", link: "/" },
-            { name: "Air Force 2", link: "/" },
-            { name: "Nike Waffle Racer", link: "/" },
-            { name: "Nike Cortez", link: "/" },
-        ],
-    },
+
     {
         title: "Help",
         links: [
@@ -98,7 +88,7 @@ export const footerLinks = [
     {
         title: "Get in touch",
         links: [
-            { name: "customer@nike.com", link: "mailto:customer@nike.com" },
+            { name: "customer@nike.com", link: "mailto:customer@blackcraft.com" },
             { name: "+92554862354", link: "tel:+92554862354" },
         ],
     },
