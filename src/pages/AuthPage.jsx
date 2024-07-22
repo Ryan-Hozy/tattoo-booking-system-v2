@@ -66,98 +66,96 @@ export default function AuthPage() {
 
 
     return (
-        <Row>
-            <Col sm={6}>
-            <SlideShow />
-            </Col>
-            <Col sm={4} 
-                    style={{height: "100%", 
-                    display:"flex", 
-                    flexDirection:'column', 
-                    alignItems:'center',
-                    justifyContent:'center',
-                    textAlign:"center",
-                    
-                    }} 
-                    >
-                <h1 className= "mt-5" style={{fontSize: 60}}>Lumiere Studio</h1>
-                <p className="mt-5" style={{fontSize: 45}}>
-                    Shine with Us
-                </p>
-                <h2 className="mt-1 mb-3 " style={{fontSize: 31}}>Join us Now</h2>
-                <Col sm={5} className="d-grid gap-2">
-                    <Button className="rounded-pill" variant="outline-dark" onClick={handleGoogleLogin}>
-                        <i className="bi bi-google">  Sign up with Google</i>
-                    </Button>
-                    <Button className="rounded-pill mt-3" variant="outline-dark">
-                        <i className="bi bi-apple mr-3">  Sign up with Apple</i>
-                    </Button>
-                    <p style={{ textAlign: "center" }}>or</p>
-                    <Button className="rounded-pill" onClick={handleShowSignUp}>
-                        Create an account
-                    </Button>
-                    <p style={{ fontSize: "12px" }}> Agree to terms</p>
-                    <p className="mt-5" style={{ fontWeight: "bold" }}>
-                        Already have an account?
-                    </p>
-                    <Button
-                        className="rounded-pill"
-                        variant="outline-primary"
-                        onClick={handleShowLogin}
-                    >
-                        Sign in
-                    </Button>
-        
-                </Col>
-                <Modal
-                    show={modalShow !== null}
-                    onHide={handleClose}
-                    animation={false}
-                    centered
-                    >
-                    <Modal.Body>
-                        <h2 className="mb-4" style={{ fontWeight: "bold" }}>
-                        {modalShow === "signup"
-                            ? "Create your account"
-                            : "Log in to your account"}
-                        </h2>
-
-                        <Form
-                        className="d-grid gap-2 px-5"
-                        onSubmit={modalShow === "signup" ? handleSignUp : handleLogin}
-                        >
-                        <Form.Group className="mb-3" controlId="formBasicEmai">
-                            <Form.Control
-                            onChange={(e) => setUsername(e.target.value)}
-                            type="email"
-                            placeholder="Enter email"
-                            />
-                        </Form.Group>
-
-                        <Form.Group className="mb-3" controlId="formBasicPassword">
-                            <Form.Control
-                            onChange={(e) => setPassword(e.target.value)}
-                            type="password"
-                            placeholder="Password"
-                            />
-                        </Form.Group>
-
-                        <p style={{ fontSize: 12 }}>
-                            By signing up, you agree to the Terms of Service and Privacy
-                            Policy, including Cookie Use. SigmaTweets may use your contact
-                            information, including your email address and phone number for
-                            purposes outlined in our Privacy Policy, like keeping your
-                            account secure and personalising our services, including ads.
-                            Learn more. Others will be able to find you by email or phone
-                            number, when provided, unless you choose otherwise here.
-                        </p>
-                        <Button className="rounded-pill" type="submit">
-                            {modalShow === "signup" ? "Sign up" : "Log in"}
-              </Button>
-            </Form>
-          </Modal.Body>
-        </Modal>
-      </Col>
-    </Row>
-  );
-}
+      <div className="min-h-max flex mt-12">
+        <div className="w-full max-w-md mx-auto bg-white rounded-xl shadow-2xl overflow-hidden md:max-w-4xl">
+          <div className="md:flex">
+            <div className="w-full p-8 md:w-1/2">
+              <h2 className="text-2xl font-semibold text-center text-purple-700">Sign In</h2>
+              <form onSubmit={handleLogin}>
+                <div className="mt-4">
+                  <label className="block text-sm">Enter Email</label>
+                  <input
+                    type="email"
+                    placeholder="Enter Email"
+                    className="w-full px-4 py-2 mt-2 border rounded-md focus:outline-none focus:ring-1 focus:ring-purple-600"
+                    onChange={(e) => setUsername(e.target.value)}
+                  />
+                </div>
+                <div className="mt-4">
+                  <label className="block text-sm">Enter password</label>
+                  <input
+                    type="password"
+                    placeholder="Enter password"
+                    className="w-full px-4 py-2 mt-2 border rounded-md focus:outline-none focus:ring-1 focus:ring-purple-600"
+                    onChange={(e) => setPassword(e.target.value)}
+                  />
+                </div>
+                <div className="flex items-baseline justify-between">
+                  <button type="submit" className="px-6 py-2 mt-4 text-white bg-purple-700 rounded-lg hover:bg-purple-800">
+                    Sign In
+                  </button>
+                </div>
+              </form>
+              <div className="mt-4 flex justify-center">
+                <button onClick={handleGoogleLogin} className="px-4 py-2 border rounded-md focus:outline-none focus:ring-1 focus:ring-purple-600 flex items-center">
+                  <img src="google-logo.png" alt="Google" className="w-4 h-4 mr-2" /> Continue with Google
+                </button>
+              </div>
+              <div className="mt-4 text-center">
+                <a href="#" className="text-sm text-blue-600 hover:underline" onClick={handleShowSignUp}>
+                  First time? Click here to sign up!
+                </a>
+              </div>
+            </div>
+            <div className="hidden md:block md:w-1/2 bg-purple-700">
+              <SlideShow />
+            </div>
+          </div>
+        </div>
+  
+        {/* Modal for SignUp */}
+        {modalShow && (
+          <div className="fixed z-10 inset-0 overflow-y-auto">
+            <div className="flex items-center justify-center min-h-screen px-4">
+              <div className="fixed inset-0 transition-opacity">
+                <div className="absolute inset-0 bg-gray-500 opacity-75"></div>
+              </div>
+              <div className="bg-white rounded-lg overflow-hidden shadow-xl transform transition-all sm:max-w-lg sm:w-full p-6">
+                <h2 className="text-2xl font-semibold text-center text-purple-700">Create your account</h2>
+                <form onSubmit={handleSignUp}>
+                  <div className="mt-4">
+                    <label className="block text-sm">Enter Email</label>
+                    <input
+                      type="email"
+                      placeholder="Enter Email"
+                      className="w-full px-4 py-2 mt-2 border rounded-md focus:outline-none focus:ring-1 focus:ring-purple-600"
+                      onChange={(e) => setUsername(e.target.value)}
+                    />
+                  </div>
+                  <div className="mt-4">
+                    <label className="block text-sm">Enter password</label>
+                    <input
+                      type="password"
+                      placeholder="Enter password"
+                      className="w-full px-4 py-2 mt-2 border rounded-md focus:outline-none focus:ring-1 focus:ring-purple-600"
+                      onChange={(e) => setPassword(e.target.value)}
+                    />
+                  </div>
+                  <div className="flex items-baseline justify-between">
+                    <button type="submit" className="px-6 py-2 mt-4 text-white bg-purple-700 rounded-lg hover:bg-purple-800">
+                      Sign Up
+                    </button>
+                  </div>
+                </form>
+                <div className="mt-4 text-center">
+                  <button className="text-sm text-blue-600 hover:underline" onClick={handleClose}>
+                    Already have an account? Sign in!
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        )}
+      </div>
+    );
+  }

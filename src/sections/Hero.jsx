@@ -15,7 +15,7 @@ const Hero = () => {
       <div className="relative xl:w-3/6 
       flex flex-col justify-center
       items-start w-full max-xl:padding-x pt-28 pl-20">
-        <p className="text-xl font-playfair text-red-600">New Collection For You</p>
+        <p className="text-xl font-playfair text-red-600">Naise Collection For You</p>
         <h1 className="mt-10 font-roboto text-8xl max-sm:text-[72px] max-sm:leading-[82] font-bold">
           <span className="xl:bg-white xl:whitespace-nowrap relative z-10 pr-10">Check Out The</span>
           <br />

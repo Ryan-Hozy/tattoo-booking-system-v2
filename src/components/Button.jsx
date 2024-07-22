@@ -1,6 +1,6 @@
-const Button = ({label, iconURL, backgroundColor, textColor, borderColor}) => {
+const Button = ({label, iconURL, backgroundColor, textColor, borderColor, onClick}) => {
   return (
-    <button className="flex justify-center items-center 
+    <button onClick={onClick} className="flex justify-center items-center 
     gap-2 px-7 py-4 border font-montserrat text-lg leading-none 
     bg-red-600 rounded-full text-white"
     >

@@ -1,7 +1,25 @@
+import { useContext } from 'react';
+import { useNavigate } from 'react-router-dom';
+import { signOut } from 'firebase/auth';
+import { AuthContext } from './AuthProvider';
 import { hamburger } from '../assets/icons';
 import { navLinks } from '../constants/index';
+import Button from './Button';
+import { auth } from '../firebase';
 
 const Nav = () => {
+    const navigate = useNavigate();
+    const { currentUser } = useContext(AuthContext);
+  
+    const handleLogout = async () => {
+      try {
+        await signOut(auth);
+        navigate('/auth');
+      } catch (error) {
+        console.error("Error logging out: ", error);
+      }
+    };
+
   return (
     <header className="padding-x py-8 sticky z-10 w-full bg-black shadow-lg">
       <nav className="flex justify-between items-center max-container">
@@ -17,9 +35,11 @@ const Nav = () => {
               >
                 {item.label}
               </a>
+                
             </li>
           ))}
         </ul>
+        <Button label="Logout" onClick={handleLogout}/>
         <div className="hidden max-lg:flex items-center">
           <img 
             src={hamburger} 
