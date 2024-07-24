@@ -8,7 +8,6 @@ import {
 
 
 import { useContext, useState, useEffect } from "react";
-import { Button, Col, Form, Image, Modal, Row } from "react-bootstrap";
 import { useNavigate } from "react-router-dom";
 import { AuthContext } from "../components/AuthProvider"; 
 import SlideShow from "../components/SlideShow";
@@ -38,7 +37,10 @@ export default function AuthPage() {
         username, 
         password
       );
-      console.log(res.user);
+      const user = res.user;
+      const uid = user.uid;
+      console.log(uid);
+      await storeUIDInNeon(uid);
     } catch (error) {
       console.error(error);
     }
@@ -47,7 +49,11 @@ export default function AuthPage() {
   const handleLogin = async (e) => {
     e.preventDefault();
     try {
-      await signInWithEmailAndPassword(auth, username, password);
+      const res = await signInWithEmailAndPassword(auth, username, password);
+      const user = res.user;
+      const uid = user.uid;
+      console.log(uid);
+      await storeUIDInNeon(uid);
     } catch (error) {
       console.error(error);
     }
@@ -56,13 +62,37 @@ export default function AuthPage() {
   const handleGoogleLogin = async (e) => {
     e.preventDefault();
     try {
-      await signInWithPopup(auth, provider);
+      const res = await signInWithPopup(auth, provider);
+      const user = res.user;
+      const uid = user.uid;
+      console.log(uid);
+      await storeUIDInNeon(uid);
     } catch (error) {
-      console.log(error);
+      console.error(error);
     }
   };
 
     const handleClose = () => setModalShow(null);
+
+    async function storeUIDInNeon(uid) {
+      try {
+        const response = await fetch("Ypostgresql://neondb_owner:ceBLkPT10ztI@ep-odd-fog-a142x87r.ap-southeast-1.aws.neon.tech/neondb?sslmode=require", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({ uid }),
+        });
+  
+        if (!response.ok) {
+          console.error("Failed to store UID in Neon console");
+        } else {
+          console.log("UID stored successfully in Neon console");
+        }
+      } catch (error) {
+        console.error("Error storing UID in Neon console:", error);
+      }
+    }
 
 
     return (
@@ -142,7 +172,7 @@ export default function AuthPage() {
                     />
                   </div>
                   <div className="flex items-baseline justify-between">
-                    <button type="submit" className="px-6 py-2 mt-4 text-white bg-purple-700 rounded-lg hover:bg-purple-800">
+                    <button type="submit" className="px-6 py-2 mt-4 text-white bg-purple-700 rounded-lg hover:bg-purple-800" onClick={handleShowLogin}>
                       Sign Up
                     </button>
                   </div>

@@ -2,7 +2,7 @@ import { BrowserRouter as Router, Route, Routes, Navigate } from 'react-router-d
 import { useContext } from 'react';
 import { AuthContext } from './components/AuthProvider'; 
 import AuthPage from './pages/AuthPage';
-import { CustomerReviews, Footer, Hero, PopularProducts, Services, Subscribe, SuperQuality } from "./sections";
+import { CustomerReviews, Footer, Hero, PopularProducts, Services, Booking, SuperQuality } from "./sections";
 import Nav from './components/Nav';
 import { AuthProvider } from "./components/AuthProvider";
 
@@ -41,7 +41,7 @@ const HomePage = () => (
       <CustomerReviews />
     </section>
     <section className="padding-x sm:py-32 py-16 w-full">
-      <Subscribe />
+      <Booking />
     </section>
     <Footer />
   </>

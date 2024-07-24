@@ -4,7 +4,6 @@ import { signOut } from 'firebase/auth';
 import { AuthContext } from './AuthProvider';
 import { hamburger } from '../assets/icons';
 import { navLinks } from '../constants/index';
-import Button from './Button';
 import { auth } from '../firebase';
 
 const Nav = () => {
@@ -39,7 +38,7 @@ const Nav = () => {
             </li>
           ))}
         </ul>
-        <Button label="Logout" onClick={handleLogout}/>
+        <h5 className="text-white cursor-pointer font-montserrat" onClick={handleLogout}>Logout</h5>
         <div className="hidden max-lg:flex items-center">
           <img 
             src={hamburger} 

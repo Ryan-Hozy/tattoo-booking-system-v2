@@ -1,4 +1,4 @@
-
+import ReviewCard from "../components/ReviewCard"
 
 const CustomerReviews = () => {
   return (
@@ -9,8 +9,8 @@ const CustomerReviews = () => {
         <p className="info-text m-auto mt-4 max-w-lg text-center">
           Hear genuine stories from our satisfied customers about their exceptional experience with us.
         </p>
-        <div className="mt-24 flex flex-1 justify-evenly items-center max-lg:flex-col gap-14">
-          
+        <div className=" flex flex-1 justify-between items-center max-lg:flex-col gap-16">
+          <ReviewCard />
         </div>
 
 
