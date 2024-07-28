@@ -5,6 +5,8 @@ import AuthPage from './pages/AuthPage';
 import { CustomerReviews, Footer, Hero, PopularProducts, Services, Booking, SuperQuality } from "./sections";
 import Nav from './components/Nav';
 import { AuthProvider } from "./components/AuthProvider";
+import { Provider } from "react-redux";
+import store from "./store";
 
 const PrivateRoute = ({ element }) => {
   const { currentUser } = useContext(AuthContext);
@@ -13,12 +15,14 @@ const PrivateRoute = ({ element }) => {
 
 const App = () => (
   <AuthProvider>
+    <Provider store={store}>
   <Router>
       <Routes>
         <Route path="/auth" element={<AuthPage />} />
         <Route path="/" element={<PrivateRoute element={<HomePage />} />} />
       </Routes>
   </Router>
+  </Provider>
   </AuthProvider>
 );
 
