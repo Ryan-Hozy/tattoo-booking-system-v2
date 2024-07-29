@@ -1,17 +1,22 @@
 import { initializeApp } from "firebase/app";
 import { getAuth } from "firebase/auth";
+import { getStorage } from "firebase/storage";
+import { getFirestore } from "firebase/firestore"; 
+
 
 const firebaseConfig = {
-  apiKey: "AIzaSyCrh9x9J7iIkubX8jT87cyDrHRiMmnfHVg",
-  authDomain: "photography-app-6b1d7.firebaseapp.com",
-  projectId: "photography-app-6b1d7",
-  storageBucket: "photography-app-6b1d7.appspot.com",
-  messagingSenderId: "355154292270",
-  appId: "1:355154292270:web:9687f64cc3cbf4935ef9bf"
+  apiKey: import.meta.env.VITE_API_KEY,
+  authDomain: import.meta.env.VITE_AUTH_DOMAIN,
+  projectId: import.meta.env.VITE_PROJECT_ID,
+  storageBucket: import.meta.env.VITE_STORAGE_BUCKET,
+  messagingSenderId: import.meta.env.VITE_MESSAGING_SENDER_ID,
+  appId: import.meta.env.VITE_APP_ID,
 };
 
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
-export const auth = getAuth(app)
+export const auth = getAuth(app);
+export const storage = getStorage(app);
+export const db = getFirestore(app);
 
 export default app;

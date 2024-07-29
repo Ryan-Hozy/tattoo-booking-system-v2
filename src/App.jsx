@@ -2,6 +2,7 @@ import { BrowserRouter as Router, Route, Routes, Navigate } from 'react-router-d
 import { useContext } from 'react';
 import { AuthContext } from './components/AuthProvider'; 
 import AuthPage from './pages/AuthPage';
+import ProfilePage from './pages/ProfilePage';
 import { CustomerReviews, Footer, Hero, PopularProducts, Services, Booking, SuperQuality } from "./sections";
 import Nav from './components/Nav';
 import { AuthProvider } from "./components/AuthProvider";
@@ -20,6 +21,7 @@ const App = () => (
       <Routes>
         <Route path="/auth" element={<AuthPage />} />
         <Route path="/" element={<PrivateRoute element={<HomePage />} />} />
+        <Route path="/profile" element={<PrivateRoute element={<ProfilePage/>} />} />
       </Routes>
   </Router>
   </Provider>
