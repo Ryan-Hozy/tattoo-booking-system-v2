@@ -84,18 +84,7 @@ const bookingSlice = createSlice({
         state.loading = false;
         state.error = action.payload || action.error.message;
       })
-      .addCase(fetchBookings.pending, (state) => {
-        state.loading = true;
-        state.error = null;
-      })
-      .addCase(fetchBookings.fulfilled, (state, action) => {
-        state.bookings = action.payload;
-        state.loading = false;
-      })
-      .addCase(fetchBookings.rejected, (state, action) => {
-        state.loading = false;
-        state.error = action.payload || action.error.message;
-      })
+      
       .addCase(deleteBooking.pending, (state) => {
         state.loading = true;
         state.error = null;
