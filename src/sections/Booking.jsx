@@ -33,7 +33,7 @@ const Booking = () => {
       message,
       user_id: userId,
     };
-    console.log("Booking Data:", bookingData);
+  
 
     dispatch(createBooking(bookingData))
       .then(response => {

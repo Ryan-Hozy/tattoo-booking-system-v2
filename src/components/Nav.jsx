@@ -20,17 +20,17 @@ const Nav = () => {
     };
 
   return (
-    <header className="padding-x py-8 sticky z-10 w-full bg-black shadow-lg">
+    <header className="padding-x py-8 sticky z-10 w-full bg-black shadow-xl">
       <nav className="flex justify-between items-center max-container">
-        <a href="/">
-          <h1 className="text-white text-bold text-xl">Black Craft Studio</h1>
+        <a href="/" className="no-underline">
+          <h1 className="text-white text-bold text-xl ">Black Craft Studio</h1>
         </a>
         <ul className="flex-1 flex justify-center items-center gap-8 max-lg:hidden">
           {navLinks.map((item) => (
             <li key={item.label}>
               <a
                 href={item.href}
-                className="font-montserrat leading-normal text-lg text-white transition-colors duration-300 hover:text-red-600"
+                className="font-montserrat leading-normal text-lg text-white transition-colors duration-300 hover:text-red-600 no-underline"
               >
                 {item.label}
               </a>

@@ -15,17 +15,25 @@ export const createBooking = createAsyncThunk(
   }
 );
 
-export const fetchBookings = createAsyncThunk(
-  "booking/fetchBookings",
-  async (_, { rejectWithValue }) => {
-    try {
-      const response = await axios.get(`${BASE_URL}/booking`);
-      return response.data;
-    } catch (error) {
-      return rejectWithValue(error.response?.data || error.message);
-    }
-  }
-);
+// export const fetchBookings = createAsyncThunk(
+//   "booking/fetchBookings",
+//   async (_, { getState, rejectWithValue }) => {
+//     const state = getState();
+//     const userId = state.auth.user?.uid;
+//     console.log("User ID:", userId);
+
+//     if (!userId) {
+//       return rejectWithValue("User ID is missing");
+//     }
+
+//     try {
+//       const response = await axios.get(`${BASE_URL}/booking/:user_id`);
+//       return response.data;
+//     } catch (error) {
+//       return rejectWithValue(error.response?.data || error.message);
+//     }
+//   }
+// );
 
 // export const updateBooking = createAsyncThunk(
 //   "booking/updateBooking",
