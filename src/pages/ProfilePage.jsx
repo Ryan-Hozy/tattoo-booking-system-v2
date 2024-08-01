@@ -144,7 +144,7 @@ export default function Profile() {
   const handleEditBooking = (booking) => {
     setEditingBookingId(booking.id);
     setEditedBookingData({
-      name: booking,
+      name: booking.name,
       date: booking.date,
       message: booking.message,
       contact: booking.contact,
