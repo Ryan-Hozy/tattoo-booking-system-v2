@@ -1,9 +1,9 @@
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { getAuth } from "firebase/auth";
 import { createBooking} from "../features/bookingSlice";
 import { Modal, Button } from "react-bootstrap";
-
+import GOOGLE_MAPS_API_KEY from "../googleMaps";
 
 const Booking = () => {
   const [name, setName] = useState("");
@@ -43,7 +43,6 @@ const Booking = () => {
       .catch(error => console.error("Error create booking:", error));
     };
 
-  
 
   const clearForm = () => {
     setName("");
@@ -52,6 +51,44 @@ const Booking = () => {
     setDate("");
     setMessage("");
   };
+
+  const mapRef = useRef(null);
+
+  useEffect(() => {
+    const loadScript = () => {
+      const script = document.createElement('script');
+      script.src = `https://maps.googleapis.com/maps/api/js?key=${GOOGLE_MAPS_API_KEY}&callback=initMap`;   
+
+      script.async   
+ = true;
+      script.defer = true;
+      document.head.appendChild(script);
+    }
+
+    loadScript(); // Call the loadScript function directly
+
+    const initMap = () => {
+      if (window.google) {
+        const map = new window.google.maps.Map(mapRef.current, {
+          center: { lat: 4.5983, lng: 101.0904 }, // Ipoh coordinates
+          zoom: 14,
+        });
+
+        new window.google.maps.Marker({
+          position: { lat: 4.5983, lng: 101.0904 },
+          map,
+          title: "Our Location",
+        });
+      }
+    };
+
+    window.initMap = initMap; // Assign initMap to the global scope
+
+    return () => {
+      // Clean up (optional, since script is not referenced outside)
+      delete window.initMap;
+    };
+  }, []);
 
 
   return (
@@ -62,26 +99,20 @@ const Booking = () => {
             Make your 
             <span className="text-red-600"> Reservations</span> Now
           </h3>
+
           <div className="px-5 py-10 mx-auto flex flex-wrap">
             <div className="xl:w-1/2 md:w-2/5 bg-gray-300 rounded-lg overflow-hidden sm:mr-10 p-10 flex items-end justify-start relative">
-              <iframe 
-                width="100%" 
-                height="100%" 
-                className="absolute inset-0" 
-                title="map"
-                src="https://maps.google.com/maps?width=100%&height=600&hl=en&q=%C4%B0zmir+(My%20Business%20Name)&ie=UTF8&t=&z=14&iwloc=B&output=embed"
-                style={{ filter: 'grayscale(1) contrast(1.2) opacity(0.4)' }}
-              ></iframe>
-              <div className="bg-white relative flex flex-wrap py-6 rounded shadow-md">
-                <div className="lg:w-1/2 px-6">
+              <div ref={mapRef} style={{ width: "100%", height: "100%" }} /> {/* Map container */}
+              <div className="bg-white relative flex flex-wrap py-6 rounded shadow-md" style={{ filter: 'grayscale(0) contrast(1) opacity(0.8)' }}>
+                <div className="lg:w-1/2 px-6" >
                   <h2 className="title-font font-semibold text-gray-900 tracking-widest text-xs">ADDRESS</h2>
-                  <p className="mt-1">Photo booth tattooed prism, portland taiyaki hoodie neutra typewriter</p>
+                  <p className="mt-1">85,   
+ Jalan C.M. Yusuff, Kampung Kuchai, 31650 Ipoh, Perak</p>
                 </div>
-                <div className="lg:w-1/2 px-6 mt-4 lg:mt-0">
-                  <h2 className="title-font font-semibold text-gray-900 tracking-widest text-xs">EMAIL</h2>
-                  <a className="text-red-500 leading-relaxed">example@email.com</a>
+                <div className="lg:w-1/2 px-6 mt-2 lg:mt-0">
                   <h2 className="title-font font-semibold text-gray-900 tracking-widest text-xs mt-4">PHONE</h2>
-                  <p className="leading-relaxed">123-456-7890</p>
+                  <p className="leading-relaxed">017-5218268</p>   
+
                 </div>
               </div>
             </div>

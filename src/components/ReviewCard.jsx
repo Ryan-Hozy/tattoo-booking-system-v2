@@ -8,7 +8,7 @@ const ReviewCard = () => {
     
       
       <ul role="list"
-        className="max-w-full mt-8 grid grid-cols-1 gap-8 sm:gap-8 lg:mt-20 lg:max-w-none lg:grid-cols-3">
+        className="max-w-full mt-8 grid grid-cols-1 gap-8 sm:gap-8 lg:mt-20 lg:max-w-none lg:grid-cols-3 max-md:px-0">
         <li>
           <ul role="list" className="flex flex-col gap-y-6 sm:gap-y-8">
             <li>
@@ -21,10 +21,10 @@ const ReviewCard = () => {
                 </blockquote>
                 <figcaption className="relative mt-6 flex items-center justify-between border-t border-slate-200 pt-6">
                   <div>
-                    <div className="font-display text-base text-slate-900">Sheryl Berge</div>
+                    <div className="font-display text-base text-slate-900">Manny Berge</div>
                   </div>
                   <div className="overflow-hidden rounded-full bg-slate-50">
-                    <img alt="" className="h-14 w-14 object-cover" src="https://randomuser.me/api/portraits/men/15.jpg/"/>
+                    <img alt="" className="h-14 w-14 object-cover" src="https://randomuser.me/api/portraits/men/15.jpg"/>
                   </div>
                 </figcaption>
               </figure>
