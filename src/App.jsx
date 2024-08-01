@@ -9,6 +9,7 @@ import { AuthProvider } from "./components/AuthProvider";
 import { Provider } from "react-redux";
 import store from "./store";
 
+
 const PrivateRoute = ({ element }) => {
   const { currentUser } = useContext(AuthContext);
   return currentUser ? element : <Navigate to="/auth" />;

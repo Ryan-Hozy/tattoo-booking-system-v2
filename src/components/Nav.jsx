@@ -26,7 +26,7 @@ const Nav = () => {
   };
 
   return (
-    <header className="padding-x py-8 sticky z-10 w-full bg-black shadow-xl">
+    <header className="padding-x py-8 sticky top-0 z-50 w-full bg-black shadow-xl">
       <nav className="flex justify-between items-center max-container">
         <a href="/" className="no-underline">
           <h1 className="text-white text-bold text-xl">Black Craft Studio</h1>
@@ -63,7 +63,7 @@ const Nav = () => {
             onClick={toggleMenu}
           />
           {isMenuOpen && (
-            <ul className="absolute right-0 top-full mt-2 w-48 bg-black text-white shadow-lg rounded-lg">
+            <ul className="absolute right-0 top-full mt-2 w-48 bg-black text-white shadow-lg rounded-lg z-20">
               {navLinks.map((item) => (
                 <li key={item.label} className="border-b border-gray-700 last:border-none">
                   {item.label === "Logout" ? (
