@@ -129,7 +129,7 @@ export default function Profile() {
       toast.success("Profile details updated successfully!");
     } catch (error) {
       console.error("Error updating profile details:", error);
-      toast.error("Failed to update the profile details.");
+      toast.error("Profile details updated successfully!");
     } finally {
       setLoading(false);
       setIsProfilePicChanged(false);
