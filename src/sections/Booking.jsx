@@ -75,9 +75,9 @@ const Booking = () => {
         });
 
         new window.google.maps.Marker({
-          position: { lat: 4.5983, lng: 101.0904 },
-          map,
-          title: "Our Location",
+          center: { lat: 4.5983, lng: 101.0904 },
+          zoom: 14,
+          mapTypeId: 'roadmap',
         });
       }
     };
@@ -99,20 +99,23 @@ const Booking = () => {
             Make your 
             <span className="text-red-600"> Reservations</span> Now
           </h3>
-
-          <div className="px-5 py-10 mx-auto flex flex-wrap">
-            <div className="xl:w-1/2 md:w-2/5 bg-gray-600 rounded-lg overflow-hidden sm:mr-10 p-10 flex items-end justify-start relative">
-              <div ref={mapRef} className="w-full h-full" /> {/* Map container */}
-              <div className="bg-white relative flex flex-wrap py-6 rounded shadow-md" style={{ filter: 'grayscale(0) contrast(1) opacity(0.8)' }}>
-                <div className="lg:w-1/2 px-6" >
+  
+          <div className="px-5 py-10 mx-auto flex flex-col md:flex-row">
+            <div className="relative xl:w-1/2 md:w-2/5 bg-gray-600 rounded-lg overflow-hidden sm:mr-10 p-0 flex items-end justify-start">
+            
+              <div ref={mapRef} className="w-full h-full min-h-[350px]" />
+              <div 
+                className="absolute bottom-10 left-10 bg-white flex flex-wrap py-6 rounded shadow-md z-10 hidden md:flex"
+                style={{ filter: "grayscale(0) contrast(1) opacity(0.8)" }}
+              >
+                <div className="lg:w-1/2 px-6">
                   <h2 className="title-font font-semibold text-gray-900 tracking-widest text-xs">ADDRESS</h2>
                   <p className="mt-1">85,   
- Jalan C.M. Yusuff, Kampung Kuchai, 31650 Ipoh, Perak</p>
+   Jalan C.M. Yusuff, Kampung Kuchai, 31650 Ipoh, Perak</p>
                 </div>
                 <div className="lg:w-1/2 px-6 mt-2 lg:mt-0">
-                  <h2 className="title-font font-semibold text-gray-900 tracking-widest text-xs mt-4">PHONE</h2>
+                  <h2 className="title-font font-semibold text-gray-900 tracking-widest text-xs">PHONE</h2>
                   <p className="leading-relaxed">017-5218268</p>   
-
                 </div>
               </div>
             </div>
@@ -186,6 +189,8 @@ const Booking = () => {
           </div>
         </section>
       </form>
+    
+  
 
       <Modal show={showModal} onHide={() => setShowModal(false)}>
         <Modal.Header closeButton>
