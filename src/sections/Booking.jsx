@@ -101,8 +101,8 @@ const Booking = () => {
           </h3>
 
           <div className="px-5 py-10 mx-auto flex flex-wrap">
-            <div className="xl:w-1/2 md:w-2/5 bg-gray-300 rounded-lg overflow-hidden sm:mr-10 p-10 flex items-end justify-start relative">
-              <div ref={mapRef} style={{ width: "100%", height: "100%" }} /> {/* Map container */}
+            <div className="xl:w-1/2 md:w-2/5 bg-gray-600 rounded-lg overflow-hidden sm:mr-10 p-10 flex items-end justify-start relative">
+              <div ref={mapRef} className="w-full h-full" /> {/* Map container */}
               <div className="bg-white relative flex flex-wrap py-6 rounded shadow-md" style={{ filter: 'grayscale(0) contrast(1) opacity(0.8)' }}>
                 <div className="lg:w-1/2 px-6" >
                   <h2 className="title-font font-semibold text-gray-900 tracking-widest text-xs">ADDRESS</h2>
