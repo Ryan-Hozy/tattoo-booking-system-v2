@@ -70,14 +70,15 @@ const Booking = () => {
     const initMap = () => {
       if (window.google) {
         const map = new window.google.maps.Map(mapRef.current, {
-          center: { lat: 4.5983, lng: 101.0904 }, // Ipoh coordinates
+          center: { lat: 4.58905, lng: 101.08313 },
           zoom: 14,
+          mapTypeId: "roadmap",
         });
 
         new window.google.maps.Marker({
-          center: { lat: 4.5983, lng: 101.0904 },
-          zoom: 14,
-          mapTypeId: 'roadmap',
+          position: location, 
+        map, 
+        title: "Our Shop",
         });
       }
     };

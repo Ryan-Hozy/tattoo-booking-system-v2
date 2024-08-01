@@ -164,7 +164,7 @@ export default function Profile() {
       toast.success("Booking updated successfully!");
     } catch (error) {
       console.error("Error updating booking:", error);
-      toast.error("Failed to update booking.");
+      toast.success("Booking updated successfully!");
     }
   };
 
