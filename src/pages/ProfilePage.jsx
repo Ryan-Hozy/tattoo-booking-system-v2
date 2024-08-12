@@ -12,7 +12,7 @@ import { FaEdit } from "react-icons/fa";
 import Nav from '../components/Nav';
 import axios from 'axios';
 
-const BASE_URL = 'https://e10465e6-2c62-4400-932b-e3b715e420a2-00-a06eotzji59s.pike.replit.dev'; // Replace with your actual API base URL
+const BASE_URL = 'https://api-render-io.onrender.com'; // Replace with your actual API base URL
 
 export default function Profile() {
   const auth = getAuth();
